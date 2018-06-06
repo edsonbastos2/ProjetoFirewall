@@ -14,15 +14,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let packs of pack; let i = index">
+        <tr #i>
           <th scope="row"></th>
-          <td>{{packs.ipOrigem}}</td>
-          <td>{{packs.ipDestino}}</td>
-          <td>{{packs.protocolo}}</td>
-          <td>{{packs.porta}}</td>
-          <td>{{packs.entrada}}</td>
+          <td>{{formulario.value.ipOrigem}}</td>
+          <td>{{formulario.value.ipDestino}}</td>
+          <td>{{formulario.value.protocolo}}</td>
+          <td>{{formulario.value.porta}}</td>
+          <td>{{formulario.value.entrada}}</td>
           <td>
-            <button (click)="edit(i)" data-toggle="modal" data-target="#edit">edit</button>
+            <button class="btn btn-primary mr-3" (click)="edit(i)" data-toggle="modal" data-target="#edit">edit</button>
               <!-- Modal -->
               <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -33,8 +33,9 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
+              
                     <div class="modal-body">
-                      <form #idit = "ngForm" (ngSubmit)="onClickSubmit(idi)">
+                      <form novalidate #formulario="ngForm">
                           <div class="form-group">
                               <label for="ipOrigem">Ip origem</label>
                               <input type="text" class="form-control" id="ipOrigem" name="ipOrigem" ngModel>
@@ -59,13 +60,13 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                      <button type="submit" class="btn btn-primary"  data-dismiss="modal" value="submit">Salvar</button>
+                      <button type="button" class="btn btn-primary"  data-dismiss="modal"(click)="addForm()">Salvar</button>
                     </div>
                   </div>
                 </div>
               </div>
 
-            <button (click)="del(i)">del</button>
+            <button class="btn btn-danger" (click)="del(i)">del</button>
           </td>
           <td>
         </tr>
@@ -86,32 +87,32 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form>
+                    <form novalidate #formulario2="ngForm">
                         <div class="form-group">
                             <label for="ipOrigem">Ip origem</label>
-                            <input type="text" class="form-control" id="ipOrigem">
+                            <input type="text" class="form-control" id="ipOrigem" name="ipOrigem" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="ipDestino">Ip destino</label>
-                            <input type="text" class="form-control" id="ipDestino">
+                            <input type="text" class="form-control" id="ipDestino" name="ipDestino" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="protocolo">Protocolo</label>
-                            <input type="text" class="form-control" id="protocolo">
+                            <input type="text" class="form-control" id="protocolo" name="protocolo" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="porta">Porta</label>
-                            <input type="text" class="form-control" id="porta">
+                            <input type="text" class="form-control" id="porta" name="porta" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="entrada">Entrada</label>
-                            <input type="text" class="form-control" id="entrada">
+                            <input type="text" class="form-control" id="entrada" name="entrada" ngModel>
                         </div>
                     </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="add()">Salvar</button>
+                    <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="addForm2()">Salvar</button>
                   </div>
                 </div>
               </div>

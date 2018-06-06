@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Pack } from '../shared/pack.model';
 import { Angular2Txt } from 'angular2-txt/Angular2-txt';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-painel',
@@ -9,6 +10,11 @@ import { Angular2Txt } from 'angular2-txt/Angular2-txt';
 
 })
 export class PainelComponent implements OnInit {
+
+  @ViewChild('formulario') public formulario: NgForm
+
+  @ViewChild('formulario2') public formulario2: NgForm
+
 
   public informacao:Pack[]
 
@@ -135,5 +141,13 @@ export class PainelComponent implements OnInit {
         break
       }
     }
+  }
+
+  public addForm(): void {
+    console.log(this.formulario)   
+  }
+
+  public addForm2():void{
+    console.log(this.addForm2)
   }
 }
